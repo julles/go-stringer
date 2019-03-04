@@ -10,6 +10,9 @@ go get github.com/julles/go-stringer
 
 ``` sh
 dep ensure -add github.com/julles/go-stringer
+
+dep ensure
+
 ```
 
 # Example 
@@ -33,8 +36,11 @@ kata.LowerFirst()
 fmt.Println(kata) // the output "rEZA"
 
 var kata2 s.Words = "REZA"
-kata2.Reverse()
-fmt.Println(kata2) // the output "AZER"
+
+kata2.Reverse().
+	Replace("A","I")
+
+fmt.Println(kata2) // the output "IZER"
 
 var kata3 s.Words = "Muhamad Reza Abdul Rohim"
 kata3.CamelCase(" ")
@@ -46,7 +52,13 @@ Using chaining method
 
 ``` go
 var kata s.Words = "REZA"
-kata.LowerFirst().LowerLast().Reverse().Replace("a", "i").Repeat(2)
+
+kata.LowerFirst().
+	LowerLast().
+	Reverse().
+	Replace("a", "i").
+	Repeat(2)
+
 fmt.Println(kata) // the output "iZEriZEr"
 
 ```
